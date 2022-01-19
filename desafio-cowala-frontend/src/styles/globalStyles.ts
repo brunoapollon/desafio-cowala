@@ -17,9 +17,12 @@ const GlobalStyle = createGlobalStyle`
     height: 100vh;
     background: var(--dark-gray);
   }
-  h1,h2,h3,h4,h5, p, span, input, a, button, table{
+  h1,h2,h3,h4,h5, p, span, input, a, button, table, label, input{
     font-family: 'Roboto', serif;
     color: var(--black)
+  }
+  button {
+    cursor: pointer;
   }
 `;
 
