@@ -19,7 +19,7 @@
     "baseUrl": ".",
     "paths": {
       "@entities/*": ["./src/entities/*"],
-      "@services/*": ["./src/services/*"],
+      "@middlewares/*": ["./src/middlewares/*"],
       "@dtos/*": ["./src/dtos/*"],
       "@controllers/*": ["./src/controllers/*"],
       "@routes/*": ["./src/routes/*"],
