@@ -14,4 +14,6 @@ productRouter.get('/show_product/:product_id', productController.show);
 
 productRouter.delete('/delete_product/:product_id', productController.delete);
 
+productRouter.put('/update_product/:product_id', productController.update);
+
 export { productRouter };

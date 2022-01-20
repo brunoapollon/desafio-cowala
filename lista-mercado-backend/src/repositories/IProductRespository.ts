@@ -6,4 +6,5 @@ export default interface IProductRepository {
   findById(id: number): Product | undefined;
   listAllProducts(): Product[];
   deleteProject(id: number): void;
+  updateProject(id: number, item: string, preco: number): Product;
 }

@@ -33,6 +33,20 @@ class FakeProductRespository implements IProductRepository {
       1,
     );
   }
+
+  public updateProject(id: number, item: string, preco: number): Product {
+    const findIndexProject = this.products.findIndex(
+      product => product.id === id,
+    );
+
+    const project = this.products[findIndexProject];
+
+    this.products[findIndexProject].item = !!item ? item : project.item;
+
+    this.products[findIndexProject].preco = !!preco ? preco : project.preco;
+
+    return this.products[findIndexProject];
+  }
 }
 
 export { FakeProductRespository };

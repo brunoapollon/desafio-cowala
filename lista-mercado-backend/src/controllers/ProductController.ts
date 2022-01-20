@@ -53,6 +53,23 @@ class ProductCrontoller {
       .status(202)
       .json({ message: 'Product deleted successfully' });
   }
+
+  public update(request: Request, response: Response): Response {
+    const { product_id } = request.params;
+    const { item, preco } = request.body;
+
+    const productFinded = fakeProductRespository.findById(parseInt(product_id));
+
+    if (!productFinded) throw new Error('Product not found');
+
+    const productUpdated = fakeProductRespository.updateProject(
+      parseInt(product_id),
+      item,
+      preco,
+    );
+
+    return response.status(201).json(productUpdated);
+  }
 }
 
 export { ProductCrontoller };
