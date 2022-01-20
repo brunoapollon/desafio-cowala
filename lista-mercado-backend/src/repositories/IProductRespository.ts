@@ -5,4 +5,5 @@ export default interface IProductRepository {
   create(data: ICreateProductDTO): Product;
   findById(id: number): Product | undefined;
   listAllProducts(): Product[];
+  deleteProject(id: number): void;
 }

@@ -26,6 +26,13 @@ class FakeProductRespository implements IProductRepository {
   public listAllProducts(): Product[] {
     return this.products;
   }
+
+  public deleteProject(id: number): void {
+    this.products.splice(
+      this.products.findIndex(product => product.id === id),
+      1,
+    );
+  }
 }
 
 export { FakeProductRespository };

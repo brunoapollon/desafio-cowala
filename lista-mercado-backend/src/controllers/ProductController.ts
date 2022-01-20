@@ -29,6 +29,7 @@ class ProductCrontoller {
 
     return response.status(200).json(products);
   }
+
   public show(request: Request, response: Response): Response {
     const { product_id } = request.params;
 
@@ -37,6 +38,20 @@ class ProductCrontoller {
     if (!productFinded) throw new Error('Product not found');
 
     return response.status(200).json(productFinded);
+  }
+
+  public delete(request: Request, response: Response): Response {
+    const { product_id } = request.params;
+
+    const productFinded = fakeProductRespository.findById(parseInt(product_id));
+
+    if (!productFinded) throw new Error('Product not found');
+
+    fakeProductRespository.deleteProject(parseInt(product_id));
+
+    return response
+      .status(202)
+      .json({ message: 'Product deleted successfully' });
   }
 }
 
