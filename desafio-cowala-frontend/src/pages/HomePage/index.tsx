@@ -30,9 +30,9 @@ const HomePage: React.FC = function () {
 
   useEffect(() => {
     const userStorage = localStorage.getItem('@DCS:user') || '';
-    const user: Iuser = JSON.parse(userStorage);
 
-    if (!!user) {
+    if (!!userStorage) {
+      const user = JSON.parse(userStorage);
       const { ip, name, occupation, phone } = user;
 
       setName(name);
@@ -60,6 +60,15 @@ const HomePage: React.FC = function () {
   const handleGetUserIp = useCallback(async () => {
     const { data } = await api.get('/ip');
     setIp(data);
+  }, []);
+
+  const handleClearAllData = useCallback(() => {
+    setName('');
+    setOccupation('');
+    setPhone('');
+    setIp('');
+
+    localStorage.removeItem('@DCS:user');
   }, []);
 
   return (
@@ -112,7 +121,9 @@ const HomePage: React.FC = function () {
             </section>
             <footer>
               <button type="submit">SALVAR</button>
-              <button type="button">LIMPAR</button>
+              <button type="button" onClick={handleClearAllData}>
+                LIMPAR
+              </button>
             </footer>
           </Form>
         </SectionForm>
