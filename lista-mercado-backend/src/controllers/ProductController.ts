@@ -23,6 +23,12 @@ class ProductCrontoller {
 
     return response.json(productCreated);
   }
+
+  public index(request: Request, response: Response): Response {
+    const products = fakeProductRespository.listAllProducts();
+
+    return response.json(products);
+  }
 }
 
 export { ProductCrontoller };

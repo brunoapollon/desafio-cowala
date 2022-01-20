@@ -22,6 +22,10 @@ class FakeProductRespository implements IProductRepository {
 
     return findProductById;
   }
+
+  public listAllProducts(): Product[] {
+    return this.products;
+  }
 }
 
 export { FakeProductRespository };
