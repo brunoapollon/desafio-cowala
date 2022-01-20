@@ -21,13 +21,22 @@ class ProductCrontoller {
       preco,
     });
 
-    return response.json(productCreated);
+    return response.status(201).json(productCreated);
   }
 
   public index(request: Request, response: Response): Response {
     const products = fakeProductRespository.listAllProducts();
 
-    return response.json(products);
+    return response.status(200).json(products);
+  }
+  public show(request: Request, response: Response): Response {
+    const { product_id } = request.params;
+
+    const productFinded = fakeProductRespository.findById(parseInt(product_id));
+
+    if (!productFinded) throw new Error('Product not found');
+
+    return response.status(200).json(productFinded);
   }
 }
 
