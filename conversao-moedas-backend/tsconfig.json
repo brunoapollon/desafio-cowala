@@ -21,6 +21,7 @@
       "@entities/*": ["./src/entities/*"],
       "@dtos/*": ["./src/dtos/*"],
       "@controllers/*": ["./src/controllers/*"],
+      "@middlewares/*": ["./src/middlewares/*"],
       "@routes/*": ["./src/routes/*"],
       "@repositories/*": ["./src/repositories/*"],
       "@fakes/*": ["./src/repositories/fakes/*"]

@@ -1,6 +1,10 @@
-import { FakeConversionRepository } from '@fakes/FakeConversionRepository';
 import { Request, Response } from 'express';
+
 import apiConversion from 'src/services/apiConversion';
+
+import { FakeConversionRepository } from '@fakes/FakeConversionRepository';
+
+import { AppError } from '../errors/AppError';
 
 const fakeConversionRepository = new FakeConversionRepository();
 
@@ -10,11 +14,11 @@ class ConversionController {
     const { id, valorEnviado } = request.body;
 
     if (!id || !moedas || !valorEnviado)
-      throw new Error('missing data for conversion');
+      throw new AppError('missing data for conversion', 400);
 
     const findConversion = fakeConversionRepository.findById(id);
 
-    if (findConversion) throw new Error('id already exists');
+    if (findConversion) throw new AppError('id already exists', 400);
 
     const moedasSplit = moedas.split('-');
 
@@ -52,7 +56,7 @@ class ConversionController {
       parseInt(conversion_id),
     );
 
-    if (!conversionFinded) throw new Error('Conversion not found');
+    if (!conversionFinded) throw new AppError('Conversion not found', 404);
 
     return response.status(200).json(conversionFinded);
   }
@@ -64,7 +68,7 @@ class ConversionController {
       parseInt(conversion_id),
     );
 
-    if (!conversionFinded) throw new Error('Conversion not found');
+    if (!conversionFinded) throw new AppError('Conversion not found', 404);
 
     const conversionDeleted = fakeConversionRepository.deleteConversion(
       parseInt(conversion_id),
