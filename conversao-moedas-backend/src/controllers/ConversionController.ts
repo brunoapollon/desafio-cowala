@@ -38,6 +38,12 @@ class ConversionController {
 
     return response.status(201).json(conversionCreated);
   }
+
+  public index(request: Request, response: Response): Response {
+    const conversions = fakeConversionRepository.listAllConversions();
+
+    return response.status(200).json(conversions);
+  }
 }
 
 export { ConversionController };

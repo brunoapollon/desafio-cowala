@@ -35,6 +35,10 @@ class FakeConversionRepository implements IConversionRepository {
 
     return findConversionById;
   }
+
+  public listAllConversions(): Conversion[] {
+    return this.conversions;
+  }
 }
 
 export { FakeConversionRepository };
