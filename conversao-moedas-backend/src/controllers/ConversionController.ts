@@ -8,6 +8,14 @@ class ConversionController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { moedas } = request.params;
     const { id, valorEnviado } = request.body;
+
+    if (!id || !moedas || !valorEnviado)
+      throw new Error('missing data for conversion');
+
+    const findConversion = fakeConversionRepository.findById(id);
+
+    if (findConversion) throw new Error('id already exists');
+
     const moedasSplit = moedas.split('-');
 
     const moedaOriginal = moedasSplit[1];

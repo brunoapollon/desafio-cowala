@@ -27,6 +27,14 @@ class FakeConversionRepository implements IConversionRepository {
 
     return conversionCreated;
   }
+
+  public findById(id: number): Conversion | undefined {
+    const findConversionById = this.conversions.find(
+      conversion => conversion.id === id,
+    );
+
+    return findConversionById;
+  }
 }
 
 export { FakeConversionRepository };
