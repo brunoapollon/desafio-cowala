@@ -9,4 +9,9 @@ conversionRouter.post('/create/:moedas', conversionController.create);
 
 conversionRouter.get('/list_conversions', conversionController.index);
 
+conversionRouter.get(
+  '/show_conversion/:conversion_id',
+  conversionController.show,
+);
+
 export { conversionRouter };

@@ -44,6 +44,18 @@ class ConversionController {
 
     return response.status(200).json(conversions);
   }
+
+  public show(request: Request, response: Response): Response {
+    const { conversion_id } = request.params;
+
+    const conversionFinded = fakeConversionRepository.findById(
+      parseInt(conversion_id),
+    );
+
+    if (!conversionFinded) throw new Error('Conversion not found');
+
+    return response.status(200).json(conversionFinded);
+  }
 }
 
 export { ConversionController };
