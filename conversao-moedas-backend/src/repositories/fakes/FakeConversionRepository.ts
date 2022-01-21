@@ -39,6 +39,13 @@ class FakeConversionRepository implements IConversionRepository {
   public listAllConversions(): Conversion[] {
     return this.conversions;
   }
+
+  public deleteConversion(id: number): boolean {
+    return !!this.conversions.splice(
+      this.conversions.findIndex(conversion => conversion.id === id),
+      1,
+    );
+  }
 }
 
 export { FakeConversionRepository };

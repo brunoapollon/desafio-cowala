@@ -14,4 +14,9 @@ conversionRouter.get(
   conversionController.show,
 );
 
+conversionRouter.delete(
+  '/delete_conversion/:conversion_id',
+  conversionController.delete,
+);
+
 export { conversionRouter };

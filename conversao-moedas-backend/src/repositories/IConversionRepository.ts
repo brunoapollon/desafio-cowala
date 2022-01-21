@@ -5,4 +5,5 @@ export default interface IConversionRepository {
   create(data: ICreateConversionDTO): Conversion;
   findById(id: number): Conversion | undefined;
   listAllConversions(): Conversion[];
+  deleteConversion(id: number): boolean;
 }
