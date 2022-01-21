@@ -1,0 +1,35 @@
+import { FakeConversionRepository } from '@fakes/FakeConversionRepository';
+import { Request, Response } from 'express';
+import apiConversion from 'src/services/apiConversion';
+
+const fakeConversionRepository = new FakeConversionRepository();
+
+class ConversionController {
+  public async create(request: Request, response: Response): Promise<Response> {
+    const { moedas } = request.params;
+    const { id, valorEnviado } = request.body;
+    const moedasSplit = moedas.split('-');
+
+    const moedaOriginal = moedasSplit[1];
+    const moedaDaConversao = moedasSplit[0];
+
+    const { data } = await apiConversion.get(`/${moedas}`);
+    const { bid } = data[`${moedaDaConversao}${moedaOriginal}`];
+
+    const parseFloatBid = parseFloat(bid);
+
+    const valorConvertido = valorEnviado * parseFloatBid;
+
+    const conversionCreated = fakeConversionRepository.create({
+      id,
+      moedaDaConversao,
+      moedaOriginal,
+      valorConvertido,
+      valorEnviado,
+    });
+
+    return response.status(201).json(conversionCreated);
+  }
+}
+
+export { ConversionController };

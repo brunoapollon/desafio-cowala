@@ -17,6 +17,13 @@
     "strict": true,
     "skipLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@entities/*": ["./src/entities/*"],
+      "@dtos/*": ["./src/dtos/*"],
+      "@controllers/*": ["./src/controllers/*"],
+      "@routes/*": ["./src/routes/*"],
+      "@repositories/*": ["./src/repositories/*"],
+      "@fakes/*": ["./src/repositories/fakes/*"]
+    }
   }
 }
