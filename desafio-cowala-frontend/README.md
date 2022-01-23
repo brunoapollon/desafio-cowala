@@ -1,11 +1,6 @@
 <h1 align="center">
 Desafio cowala frontend
 </h1>
-<p align="center">
-<a href="#-tecnologias">Tecnologias</a>   |   
-<a href="#-projeto">Projeto</a>   |   
-<a href="#-observações">Observações</a>
-</p>
 
 <br>
 
